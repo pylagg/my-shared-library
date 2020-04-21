@@ -1,4 +1,5 @@
-pipeline{
+def call(){
+	pipeline{
 	agent any
 	tools{
 	maven 'MAVEN_HOME'
@@ -29,6 +30,6 @@ pipeline{
 				 bat 'mvn test'
 			}
 		}
-    }
+  }}
 @Library("my-shared-library@part2")
 jenkinsJob.call()
