@@ -13,7 +13,7 @@ def createDeploymentJob(jobName, repoUrl, branch) {
                         }
                     }
                 }
-                scriptPath("jenkinsfile")
+                scriptPath("Jenkinsfile")
             }
         }
     }
