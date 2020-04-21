@@ -46,12 +46,12 @@ def call(){
 	post {
 		 
    		 failure {
-      			  mail to: mail_id,
+      			  mail to: 'pk1932ag@gmail.com',
              		subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
              		body: "Something is wrong with ${env.BUILD_URL}"
     		}
 		success{
-      			  mail to: mail_id,
+      			  mail to: 'pk1932ag@gmail.com',
              		subject: "Success Pipeline: ${currentBuild.fullDisplayName}",
              		body: "Congratulations ${env.BUILD_URL}"
     		}
