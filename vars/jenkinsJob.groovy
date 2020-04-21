@@ -8,8 +8,8 @@ pipeline{
   stages {
         	stage("Code Checkout") {
                      steps {
-                	git branch: 'master',
-                	url: 'https://github.com/pylagg/maven_demo.git'
+                	git branch: branch,
+                	url: repoUrl
                   }
               }
 	      stage('Build Stage')
