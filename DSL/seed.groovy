@@ -18,3 +18,8 @@ def createDeploymentJob(jobName, repoUrl, branch) {
         }
     }
 }
+def buildPipelineJobs() {
+    createDeploymentJob(jobName, repoUrl, branch)
+}
+
+buildPipelineJobs()
