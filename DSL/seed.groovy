@@ -1,4 +1,4 @@
-def createDeploymentJob(jobName, repoUrl, branch) {
+def createDeploymentJob(jobName, repoUrl, branch_repo) {
     pipelineJob(jobName) {
         definition {
             cpsScm {
@@ -7,7 +7,7 @@ def createDeploymentJob(jobName, repoUrl, branch) {
                         remote {
                             url(repoUrl)
                         }
-                        branches(branch)
+                        branches(branch_repo)
                         extensions {
                             cleanBeforeCheckout()
                         }
@@ -19,7 +19,7 @@ def createDeploymentJob(jobName, repoUrl, branch) {
     }
 }
 def buildPipelineJobs() {
-    createDeploymentJob(jobName, repoUrl, branch)
+    createDeploymentJob(jobName, repoUrl, branch_repo)
 }
 
 buildPipelineJobs()
