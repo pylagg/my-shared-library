@@ -1,5 +1,3 @@
-
-
 pipeline{
 	agent any
 	tools{
@@ -32,3 +30,5 @@ pipeline{
 			}
 		}
     }
+@Library("my-shared-library@part2")
+jenkinsJob.call()
