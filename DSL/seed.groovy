@@ -1,3 +1,20 @@
-job(jobName) {
-    description("A simple Freestyle Job created from seed.groovy")
+def createDeploymentJob(jobName, repoUrl, branch) {
+    pipelineJob(jobName) {
+        definition {
+            cpsScm {
+                scm {
+                    git {
+                        remote {
+                            url(repoUrl)
+                        }
+                        branches(branch)
+                        extensions {
+                            cleanBeforeCheckout()
+                        }
+                    }
+                }
+                scriptPath("jenkinsfile")
+            }
+        }
+    }
 }
