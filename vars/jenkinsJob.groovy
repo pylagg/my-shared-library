@@ -5,12 +5,6 @@ def call(){
 	maven 'MAVEN_HOME'
 	}
   stages {
-        	stage("Code Checkout") {
-                     steps {
-                	git branch: branch_repo,
-                	url: repoUrl
-                  }
-              }
 	      stage('Build Stage')
 		{
 			steps{
