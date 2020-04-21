@@ -1,4 +1,4 @@
-def createDeploymentJob(jobName, repoUrl, repo_branch) {
+def createDeploymentJob(jobName, repoUrl, repo_branch, mail_id) {
     pipelineJob(jobName) {
         definition {
             cpsScm {
@@ -19,7 +19,7 @@ def createDeploymentJob(jobName, repoUrl, repo_branch) {
     }
 }
 def buildPipelineJobs() {
-    createDeploymentJob(jobName, repoUrl, repo_branch)
+    createDeploymentJob(jobName, repoUrl, repo_branch,mail_id)
 }
 
 buildPipelineJobs()
