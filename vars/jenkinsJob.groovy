@@ -31,5 +31,4 @@ def call(){
 			}
 		}
   }}
-@Library("my-shared-library@part2")
-jenkinsJob.call()
+}
