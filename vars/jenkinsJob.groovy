@@ -7,7 +7,7 @@ def call(){
   stages {
         	stage("Code Checkout") {
                      steps {
-                	git branch: branch,
+                	git branch: branch_repo,
                 	url: repoUrl
                   }
               }
