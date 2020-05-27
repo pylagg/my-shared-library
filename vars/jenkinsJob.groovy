@@ -1,6 +1,6 @@
 def call(){
 	pipeline{
-		agent any
+		agent none
 		tools{
 			maven 'MAVEN_HOME'
 		}
@@ -47,7 +47,7 @@ def call(){
                 		}
             		}
         	}    
-		stage('Deploy artifact using maven')
+		stage('Artifactory')
 		{
 			
 			agent {
@@ -58,7 +58,7 @@ def call(){
 			stash name: 'war', includes: '**/*.war'
 			}
 		}
-		stage('Deploy to tomcat')
+		stage('Application deploy to tomcat')
 		{
 			agent {
 			label 'window'
@@ -67,26 +67,26 @@ def call(){
 			bat "copy target\\HelloWorld.war \"C:\\Users\\Payal\\Software\\New folder\\apache-tomcat-8.5.53\\webapps\""
 			}
 		}		
-		stage('Building image') {
+		stage('Docker image build') {
  			 agent {
-			label 'linux'
+			label 'docker_slave'
 			}
 			steps{
 				unstash 'war'
 				sh 'docker build -t pylagg/first_repo":${BUILD_NUMBER}" .'
 			}
   		}
-		stage('Deploy image') {
+		stage('Docker hub integration') {
 			agent {
-			label 'linux'
+			label 'docker_slave'
 			}
 			steps{
 				sh 'docker push pylagg/first_repo":${BUILD_NUMBER}"'
 			}
 		}
-		stage('Run container'){
+		stage('Run docker image'){
 			agent {
-			label 'linux'
+			label 'docker_slave'
 			}
 			steps{
 				sh( script: '''#!/bin/bash
